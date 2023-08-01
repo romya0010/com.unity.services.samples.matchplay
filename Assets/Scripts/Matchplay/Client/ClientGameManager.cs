@@ -53,10 +53,17 @@ namespace Matchplay.Client
 
             //Catch for if the authentication fails, we can still do local server Testing
             if (authenticationResult == AuthState.Authenticated)
+            {
                 User.AuthId = AuthenticationWrapper.PlayerID();
+                Debug.Log($"did Auth sucsess ?{authenticationResult} {User.AuthId}");
+
+            } 
             else
+            {
                 User.AuthId = Guid.NewGuid().ToString();
-            Debug.Log($"did Auth?{authenticationResult} {User.AuthId}");
+                Debug.Log($"did Auth?{authenticationResult} {User.AuthId}");
+            }
+            
             Initialized = true;
         }
 
